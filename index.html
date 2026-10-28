@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Rivera // CS Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              pine: {
+                950: '#0E1815', // Main Deep Pine Background
+                900: '#15221E', // Secondary Card / Section Background
+                800: '#1F332D', // Subtle hover card state
+                700: '#253831', // Border color
+                600: '#344C43',
+              },
+              sage: {
+                100: '#E8ECE9',
+                300: '#A3B18A', // Primary Highlight
+                400: '#88A082', // Accent Green
+                500: '#6C8366',
+              },
+              rust: {
+                400: '#E07A5F', // Rust accent text
+                500: '#D4A373', // Terracotta warm highlight
+                600: '#C2593F',
+              },
+              cream: {
+                50: '#FAF7F2',  // Primary Text Color
+                100: '#F3EFE6',
+                200: '#E8ECE9', // Muted Text Color
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['Fira Code', 'monospace'],
+            }
+          }
+        }
+      }
+    </script>
+
+    <style>
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0E1815;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #253831;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #88A082;
+      }
+
+      /* Subtle Topo Pattern Background Effect */
+      .topo-bg {
+        background-image: radial-gradient(rgba(136, 160, 130, 0.08) 1px, transparent 0);
+        background-size: 24px 24px;
+      }
+    </style>
+</head>
+<body class="bg-pine-950 text-cream-50 font-sans antialiased selection:bg-sage-400 selection:text-pine-950 min-h-screen flex flex-col topo-bg">
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="sticky top-0 z-40 backdrop-blur-md bg-pine-950/85 border-b border-pine-700/60 transition-all duration-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="p-1.5 rounded-lg bg-pine-900 border border-pine-700 text-sage-300 group-hover:border-sage-400/50 transition-colors">
+                    <i data-lucide="trees" class="w-5 h-5"></i>
+                </div>
+                <span class="font-bold text-lg tracking-tight text-cream-50 group-hover:text-sage-300 transition-colors">
+                    Alex Rivera <span class="text-sage-400 font-mono text-xs ml-1">// CS</span>
+                </span>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-cream-200">
+                <a href="#about" class="hover:text-sage-300 transition-colors flex items-center gap-1.5">
+                    <i data-lucide="compass" class="w-4 h-4 text-sage-400"></i> About
+                </a>
+                <a href="#projects" class="hover:text-sage-300 transition-colors flex items-center gap-1.5">
+                    <i data-lucide="code-2" class="w-4 h-4 text-sage-400"></i> Projects
+                </a>
+                <a href="#contact" class="hover:text-sage-300 transition-colors flex items-center gap-1.5">
+                    <i data-lucide="mail" class="w-4 h-4 text-sage-400"></i> Contact
+                </a>
+            </nav>
+
+            <!-- Action CTA -->
+            <div class="flex items-center gap-3">
+                <button onclick="openResumeModal()" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-pine-900 border border-pine-700 text-cream-50 text-xs sm:text-sm font-medium hover:border-sage-400 hover:text-sage-300 transition-all">
+                    <i data-lucide="file-text" class="w-4 h-4 text-rust-500"></i>
+                    <span>Resume</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 space-y-20 py-10">
+
+        <!-- ================= HERO SECTION ================= -->
+        <section id="hero" class="relative pt-6 sm:pt-12 pb-6 flex flex-col items-start">
+            
+            <!-- Availability Badge -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pine-900/90 border border-pine-700 text-xs text-sage-300 font-mono mb-6">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Seeking Software Engineering Internships / New Grad Roles</span>
+            </div>
+
+            <!-- Main Title -->
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-cream-50 max-w-3xl leading-tight">
+                Building robust systems & clean software, <span class="text-transparent bg-clip-text bg-gradient-to-r from-sage-300 via-rust-500 to-sage-400">inspired by the outdoors.</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="mt-4 text-base sm:text-lg text-cream-200 max-w-2xl leading-relaxed">
+                Computer Science Senior @ State University. Focused on low-level systems programming, distributed algorithms, and functional software design.
+            </p>
+
+            <!-- Tech Pills -->
+            <div class="mt-6 flex flex-wrap gap-2 text-xs font-mono text-cream-200">
+                <span class="px-2.5 py-1 rounded-md bg-pine-900 border border-pine-700 flex items-center gap-1.5">
+                    <i data-lucide="terminal" class="w-3.5 h-3.5 text-rust-500"></i> C / C++
+                </span>
+                <span class="px-2.5 py-1 rounded-md bg-pine-900 border border-pine-700 flex items-center gap-1.5">
+                    <i data-lucide="cpu" class="w-3.5 h-3.5 text-sage-400"></i> Rust & Linux
+                </span>
+                <span class="px-2.5 py-1 rounded-md bg-pine-900 border border-pine-700 flex items-center gap-1.5">
+                    <i data-lucide="layers" class="w-3.5 h-3.5 text-rust-500"></i> Distributed Systems
+                </span>
+                <span class="px-2.5 py-1 rounded-md bg-pine-900 border border-pine-700 flex items-center gap-1.5">
+                    <i data-lucide="globe" class="w-3.5 h-3.5 text-sage-400"></i> Full-Stack Web
+                </span>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="mt-8 flex flex-wrap items-center gap-3">
+                <a href="#projects" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-sage-400 text-pine-950 font-semibold text-sm hover:bg-sage-300 transition-all shadow-md shadow-sage-950/20">
+                    <span>View Projects</span>
+                    <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                </a>
+
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-pine-900 border border-pine-700 text-cream-50 text-sm hover:border-sage-400 hover:text-sage-300 transition-all">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                    <span>GitHub</span>
+                </a>
+
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-pine-900 border border-pine-700 text-cream-50 text-sm hover:border-sage-400 hover:text-sage-300 transition-all">
+                    <i data-lucide="linkedin" class="w-4 h-4"></i>
+                    <span>LinkedIn</span>
+                </a>
+
+                <a href="#contact" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-pine-900/50 border border-pine-700 text-cream-200 text-sm hover:border-sage-400 hover:text-cream-50 transition-all">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                    <span>Contact Me</span>
+                </a>
+            </div>
+        </section>
+
+
+        <!-- ================= ABOUT SECTION ================= -->
+        <section id="about" class="pt-6 border-t border-pine-700/60">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                
+                <!-- Left Bio Column -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center gap-2 text-rust-500 font-mono text-xs uppercase tracking-wider">
+                        <i data-lucide="mountain" class="w-4 h-4"></i>
+                        <span>Background & Philosophy</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-cream-50">
+                        Engineering with simplicity and precision
+                    </h2>
+                    <p class="text-cream-200 text-sm sm:text-base leading-relaxed">
+                        I am a Computer Science senior who splits time between debugging concurrent kernels and exploring mountain trails. My passion lies at the intersection of low-level systems programming, memory safety, and modular system architecture.
+                    </p>
+                    <p class="text-cream-200 text-sm sm:text-base leading-relaxed">
+                        Whether implementing virtual memory management in C or building distributed key-value stores in Go, I believe good software design mirrors a well-planned expedition: straightforward, resilient to edge cases, and built to handle stress seamlessly.
+                    </p>
+                </div>
+
+                <!-- Right Quick Info Cards -->
+                <div class="bg-pine-900 border border-pine-700 rounded-xl p-5 space-y-4">
+                    <h3 class="text-sm font-semibold text-cream-50 flex items-center gap-2 border-b border-pine-700/80 pb-3">
+                        <i data-lucide="graduation-cap" class="w-4 h-4 text-sage-400"></i>
+                        Quick Summary
+                    </h3>
+                    
+                    <div class="space-y-3 text-xs sm:text-sm">
+                        <div class="flex justify-between items-start">
+                            <span class="text-cream-200">University:</span>
+                            <span class="font-medium text-cream-50 text-right">State University</span>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <span class="text-cream-200">Degree:</span>
+                            <span class="font-medium text-cream-50 text-right">B.S. Computer Science</span>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <span class="text-cream-200">Graduation:</span>
+                            <span class="font-medium text-sage-300 text-right">May 2026</span>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <span class="text-cream-200">Core Stack:</span>
+                            <span class="font-mono text-rust-500 text-right">C++, Rust, Go, Python</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= PROJECTS SECTION ================= -->
+        <section id="projects" class="space-y-6 pt-6 border-t border-pine-700/60">
+            
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <div class="flex items-center gap-2 text-sage-400 font-mono text-xs uppercase tracking-wider">
+                        <i data-lucide="folder-git-2" class="w-4 h-4"></i>
+                        <span>Selected Work</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-cream-50 mt-1">
+                        Computer Science Projects
+                    </h2>
+                    <p class="text-cream-200 text-sm mt-1 max-w-xl">
+                        Hand-crafted projects from my coursework and independent research into systems design, algorithms, and full-stack software.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Filter & Search Controls Bar -->
+            <div class="bg-pine-900/80 border border-pine-700 rounded-xl p-3 sm:p-4 flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+                
+                <!-- Category Filter Buttons -->
+                <div class="flex flex-wrap items-center gap-1.5" id="category-filters">
+                    <button onclick="setCategory('all')" data-cat="all" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-sage-400 text-pine-950 font-semibold">
+                        All
+                    </button>
+                    <button onclick="setCategory('systems')" data-cat="systems" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-pine-950 text-cream-200 hover:text-cream-50 border border-pine-700">
+                        Systems & Low-Level
+                    </button>
+                    <button onclick="setCategory('fullstack')" data-cat="fullstack" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-pine-950 text-cream-200 hover:text-cream-50 border border-pine-700">
+                        Full Stack
+                    </button>
+                    <button onclick="setCategory('algorithms')" data-cat="algorithms" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-pine-950 text-cream-200 hover:text-cream-50 border border-pine-700">
+                        Data & Algorithms
+                    </button>
+                </div>
+
+                <!-- Instant Search Input -->
+                <div class="relative min-w-[220px]">
+                    <i data-lucide="search" class="w-4 h-4 text-cream-200 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                    <input 
+                        type="text" 
+                        id="search-input" 
+                        placeholder="Search projects or tech..." 
+                        oninput="onSearchInput(this.value)"
+                        class="w-full bg-pine-950 border border-pine-700 text-cream-50 text-xs rounded-lg pl-9 pr-8 py-2 focus:outline-none focus:border-sage-400 transition-colors placeholder:text-cream-200/50"
+                    />
+                    <button id="clear-search" onclick="clearSearch()" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-cream-200 hover:text-cream-50">
+                        <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Projects Grid -->
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cards dynamically populated via JS -->
+            </div>
+
+            <!-- Empty State Message -->
+            <div id="empty-state" class="hidden text-center py-12 bg-pine-900/50 border border-pine-700 rounded-xl">
+                <i data-lucide="search-x" class="w-10 h-10 text-sage-400 mx-auto mb-3 opacity-60"></i>
+                <h3 class="text-base font-medium text-cream-50">No projects found</h3>
+                <p class="text-xs text-cream-200 mt-1">Try adjusting your category filter or search keywords.</p>
+                <button onclick="resetFilters()" class="mt-4 px-3 py-1.5 bg-pine-800 text-sage-300 rounded-lg text-xs font-mono border border-pine-700 hover:border-sage-400">
+                    Reset Filters
+                </button>
+            </div>
+
+        </section>
+
+
+        <!-- ================= CONTACT SECTION ================= -->
+        <section id="contact" class="pt-6 border-t border-pine-700/60 pb-10">
+            <div class="bg-gradient-to-br from-pine-900 to-pine-950 border border-pine-700 rounded-2xl p-6 sm:p-10 text-center space-y-6 relative overflow-hidden">
+                
+                <div class="max-w-2xl mx-auto space-y-3">
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rust-500/10 text-rust-500 border border-rust-500/30 text-xs font-mono">
+                        <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                        <span>State University • CS Department</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-4xl font-bold text-cream-50">
+                        Let's connect & build something great
+                    </h2>
+                    <p class="text-cream-200 text-sm sm:text-base">
+                        I am currently looking for Software Engineering internships and full-time new grad opportunities. Feel free to send an email or connect on GitHub!
+                    </p>
+                </div>
+
+                <!-- Copy Email Widget -->
+                <div class="inline-flex flex-col sm:flex-row items-center gap-3 bg-pine-950 border border-pine-700 p-2 sm:pr-2 sm:pl-4 rounded-xl max-w-md mx-auto">
+                    <div class="flex items-center gap-2 font-mono text-xs sm:text-sm text-sage-300 overflow-x-auto">
+                        <i data-lucide="mail" class="w-4 h-4 text-cream-200 shrink-0"></i>
+                        <span id="email-text">alex.rivera.cs@university.edu</span>
+                    </div>
+                    <button onclick="copyEmail()" id="copy-btn" class="w-full sm:w-auto shrink-0 px-3.5 py-1.5 rounded-lg bg-sage-400 text-pine-950 text-xs font-semibold hover:bg-sage-300 transition-all flex items-center justify-center gap-1.5">
+                        <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                        <span id="copy-btn-label">Copy Email</span>
+                    </button>
+                </div>
+
+                <!-- Social Links Row -->
+                <div class="flex items-center justify-center gap-6 pt-2 text-sm text-cream-200">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-sage-300 flex items-center gap-2 transition-colors">
+                        <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-sage-300 flex items-center gap-2 transition-colors">
+                        <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
+                    </a>
+                    <a href="mailto:alex.rivera.cs@university.edu" class="hover:text-sage-300 flex items-center gap-2 transition-colors">
+                        <i data-lucide="external-link" class="w-4 h-4"></i> Direct Mail
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="border-t border-pine-700/60 bg-pine-950 py-6 text-center text-xs text-cream-200">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <p>© 2026 Alex Rivera. Built with clean HTML, Tailwind & JS.</p>
+            <div class="flex items-center gap-2 font-mono text-[11px] text-sage-400">
+                <i data-lucide="trees" class="w-3.5 h-3.5"></i>
+                <span>Deep Pine & Sage Palette</span>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ================= PROJECT DETAILS MODAL ================= -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6 bg-pine-950/80 backdrop-blur-md">
+        <div class="bg-pine-900 border border-pine-700 rounded-2xl max-w-2xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+            
+            <!-- Modal Header -->
+            <div class="p-5 sm:p-6 border-b border-pine-700/80 flex items-start justify-between gap-4 bg-pine-950/50">
+                <div>
+                    <div id="modal-course" class="text-xs font-mono text-rust-500 mb-1"></div>
+                    <h3 id="modal-title" class="text-xl sm:text-2xl font-bold text-cream-50"></h3>
+                </div>
+                <button onclick="closeProjectModal()" class="p-1.5 rounded-lg bg-pine-900 border border-pine-700 text-cream-200 hover:text-cream-50 hover:border-sage-400 transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body (Scrollable) -->
+            <div class="p-5 sm:p-6 space-y-6 overflow-y-auto flex-grow text-sm text-cream-200">
+                
+                <!-- Short Overview -->
+                <div>
+                    <h4 class="text-xs font-mono uppercase tracking-wider text-sage-400 mb-2">Project Overview</h4>
+                    <p id="modal-full-desc" class="leading-relaxed text-cream-100"></p>
+                </div>
+
+                <!-- Key Highlights -->
+                <div>
+                    <h4 class="text-xs font-mono uppercase tracking-wider text-sage-400 mb-2">Key Accomplishments & Features</h4>
+                    <ul id="modal-highlights" class="space-y-2 text-xs sm:text-sm">
+                        <!-- Populated by JS -->
+                    </ul>
+                </div>
+
+                <!-- Architecture & Learnings -->
+                <div class="bg-pine-950/80 border border-pine-700 rounded-xl p-4">
+                    <h4 class="text-xs font-mono uppercase tracking-wider text-rust-500 mb-1.5">Architecture & Learnings</h4>
+                    <p id="modal-architecture" class="text-xs leading-relaxed text-cream-200"></p>
+                </div>
+
+                <!-- Tech Stack Badges -->
+                <div>
+                    <h4 class="text-xs font-mono uppercase tracking-wider text-sage-400 mb-2">Technologies Used</h4>
+                    <div id="modal-tech-stack" class="flex flex-wrap gap-1.5">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-4 sm:p-5 border-t border-pine-700/80 bg-pine-950/50 flex flex-wrap items-center justify-between gap-3">
+                <a id="modal-github-link" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sage-400 text-pine-950 font-semibold text-xs hover:bg-sage-300 transition-colors">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                    <span>View Repository</span>
+                </a>
+
+                <button onclick="closeProjectModal()" class="px-4 py-2 rounded-lg bg-pine-800 text-cream-200 text-xs hover:text-cream-50 transition-colors">
+                    Close
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ================= RESUME MODAL ================= -->
+    <div id="resume-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6 bg-pine-950/80 backdrop-blur-md">
+        <div class="bg-pine-900 border border-pine-700 rounded-2xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+            
+            <!-- Modal Header -->
+            <div class="p-5 border-b border-pine-700/80 flex items-center justify-between bg-pine-950/50">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="file-text" class="w-5 h-5 text-rust-500"></i>
+                    <h3 class="text-lg font-bold text-cream-50">Resume Summary — Alex Rivera</h3>
+                </div>
+                <button onclick="closeResumeModal()" class="p-1.5 rounded-lg bg-pine-900 border border-pine-700 text-cream-200 hover:text-cream-50">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Resume Content -->
+            <div class="p-6 overflow-y-auto space-y-6 text-sm">
+                
+                <!-- Education -->
+                <div>
+                    <h4 class="text-xs font-mono uppercase tracking-wider text-sage-400 border-b border-pine-700 pb-1 mb-3">Education</h4>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="font-bold text-cream-50">State University</div>
+                            <div class="text-xs text-cream-200">Bachelor of Science in Computer Science</div>
+                        </div>
+                        <div class="text-right text-xs font-mono text-rust-500">
+                            Expected May 2026<br>
+                            GPA: 3.82 / 4.0
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Relevant Coursework -->
+                <div>
+                    <h4 class="text-xs font-mono uppercase tracking-wider text-sage-400 border-b border-pine-700 pb-1 mb-3">Relevant Coursework</h4>
+                    <div class="flex flex-wrap gap-1.5 text-xs font-mono text-cream-200">
+                        <span class="px-2 py-1 bg-pine-950 border border-pine-700 rounded">CS 4410: Operating Systems</span>
+                        <span class="px-2 py-1 bg-pine-950 border border-pine-700 rounded">CS 5414: Distributed Systems</span>
+                        <span class="px-2 py-1 bg-pine-950 border border-pine-700 rounded">CS 3110: Data Structures & Algorithms</span>
+                        <span class="px-2 py-1 bg-pine-950 border border-pine-700 rounded">CS 4320: Software Engineering</span>
+                        <span class="px-2 py-1 bg-pine-950 border border-pine-700 rounded">CS 4780: Machine Learning</span>
+                    </div>
+                </div>
+
+                <!-- Experience -->
+                <div>
+                    <h4 class="text-xs font-mono uppercase tracking-wider text-sage-400 border-b border-pine-700 pb-1 mb-3">Experience</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between font-bold text-cream-50 text-xs sm:text-sm">
+                                <span>Undergraduate Teaching Assistant — Systems & C</span>
+                                <span class="font-mono text-xs text-rust-500">Jan 2025 – Present</span>
+                            </div>
+                            <p class="text-xs text-cream-200 mt-1">
+                                Conduct weekly lab sessions on memory allocation, pointers, POSIX threads, and GDB debugging for 60+ students.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <div class="p-4 border-t border-pine-700/80 bg-pine-950/50 flex items-center justify-between">
+                <span class="text-xs text-cream-200 font-mono">PDF Version Available</span>
+                <button onclick="closeResumeModal()" class="px-4 py-1.5 rounded-lg bg-sage-400 text-pine-950 font-semibold text-xs hover:bg-sage-300">
+                    Close Preview
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ================= JAVASCRIPT LOGIC & PROJECTS CONFIG ================= -->
+    <script>
+        /**
+         * ============================================================================
+         *  HOW TO ADD OR EDIT PROJECTS IN CODE:
+         * ============================================================================
+         *  1. To add a new project, simply copy one of the objects inside `PROJECTS_DATA` below.
+         *  2. Paste it at the end of the array (make sure to separate items with commas).
+         *  3. Fill in the fields:
+         *      - id: Unique string slug (e.g. 'my-new-project')
+         *      - title: Title displayed on card & modal
+         *      - category: 'systems' | 'fullstack' | 'algorithms'
+         *      - course: Course title / code (e.g., 'CS 4410 - Operating Systems')
+         *      - shortDesc: 1-2 sentence description shown in grid card
+         *      - fullDesc: Detailed paragraph shown inside modal overlay
+         *      - highlights: Array of 3-4 bullet points (e.g., ['Implemented virtual memory', 'Handled IPC'])
+         *      - architecture: Paragraph explaining design decisions & tech architecture
+         *      - techStack: Array of tech tag strings (e.g., ['C', 'Linux', 'GDB'])
+         *      - githubUrl: GitHub URL string
+         * ============================================================================
+         */
+        const PROJECTS_DATA = [
+            {
+                id: 'pintos-os-kernel',
+                title: 'Pintos Operating System Kernel',
+                category: 'systems',
+                course: 'CS 4410 - Operating Systems',
+                shortDesc: 'Extended an x86 educational operating system kernel with virtual memory, user thread scheduling, and system calls.',
+                fullDesc: 'Pintos is a baseline x86 operating system framework. Across the semester, I extended the core kernel components to support multi-threading, user execution binaries, demand paging, and synchronized file operations.',
+                highlights: [
+                    'Implemented priority-based thread scheduling and解决了 priority inversion using lock-donation algorithms.',
+                    'Engineered virtual memory management with page tables, frame allocations, swap disk spaces, and stack growth.',
+                    'Developed system call handlers for process control (exec, wait, exit) and file system manipulation with strict memory validation.'
+                ],
+                architecture: 'Built purely in C for x86 architecture. Utilized QEMU and GDB for low-level kernel memory debugging, lock contention analysis, and kernel panics diagnostic.',
+                techStack: ['C', 'x86 Assembly', 'GDB', 'QEMU', 'Makefiles', 'POSIX'],
+                githubUrl: 'https://github.com'
+            },
+            {
+                id: 'distributed-kv-store',
+                title: 'Distributed Key-Value Store',
+                category: 'systems',
+                course: 'CS 5414 - Distributed Systems',
+                shortDesc: 'A fault-tolerant, replicated key-value storage engine powered by the Raft consensus protocol written in Go.',
+                fullDesc: 'A strongly-consistent distributed storage cluster designed to maintain continuous service even under network partitions and node crashes. Implements leader election, log replication, and snapshots.',
+                highlights: [
+                    'Built full Raft consensus state machine supporting leader election, heartbeat ticks, and log entries matching.',
+                    'Implemented persistent storage engine with log compaction and state snapshotting to restrict memory usage.',
+                    'Handled asynchronous RPC communication and linearizable read/write transactions across node clusters.'
+                ],
+                architecture: 'Written in Go using goroutines, channels, and gRPC for concurrent RPC handling. Tested against simulated network delays, dropped packets, and partition faults.',
+                techStack: ['Go', 'Raft Protocol', 'gRPC', 'RPC', 'Docker', 'Concurrency'],
+                githubUrl: 'https://github.com'
+            },
+            {
+                id: 'trailsync-app',
+                title: 'TrailSync - Wilderness Route Planner',
+                category: 'fullstack',
+                course: 'CS 4320 - Software Engineering',
+                shortDesc: 'Geospatial web application for offline elevation profile generation, trail condition reports, and GPX track export.',
+                fullDesc: 'An outdoors-oriented web app built to help backpackers analyze elevation profiles, calculate turn-by-turn trail coordinates, and collaborate on real-time trip reports.',
+                highlights: [
+                    'Rendered responsive 3D topographic maps and elevation gradients using Mapbox GL and dynamic SVG canvas charts.',
+                    'Created a RESTful API backend with PostgreSQL and PostGIS spatial queries for route polyline calculation.',
+                    'Integrated offline storage sync using local IndexedDB to allow viewing routes without active cellular coverage.'
+                ],
+                architecture: 'React + TypeScript frontend styled with Tailwind CSS. Node.js Express backend communicating with a PostGIS geospatial database.',
+                techStack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'PostGIS', 'Tailwind CSS'],
+                githubUrl: 'https://github.com'
+            },
+            {
+                id: 'btree-db-engine',
+                title: 'Disk-Backed B-Tree Database Engine',
+                category: 'algorithms',
+                course: 'CS 3110 - Data Structures',
+                shortDesc: 'High-performance functional B-Tree index implementation featuring copy-on-write persistence and concurrency safety.',
+                fullDesc: 'A lightweight indexing engine designed for sub-millisecond lookup times on key-value data stored on disk. Built to explore functional immutability and memory-mapped file structures.',
+                highlights: [
+                    'Implemented dynamic node splitting, merging, and redistribution algorithms maintaining optimal tree height.',
+                    'Leveraged copy-on-write semantics to achieve lock-free concurrent reads while writes are committed in batches.',
+                    'Achieved over 45,000 lookup operations per second in automated benchmarking suites.'
+                ],
+                architecture: 'Written in OCaml with strict property-based testing and benchmarking suites generated with Dune.',
+                techStack: ['OCaml', 'Functional Programming', 'Dune', 'Data Structures', 'Benchmarking'],
+                githubUrl: 'https://github.com'
+            },
+            {
+                id: 'neural-vision-classifier',
+                title: 'Edge Species Neural Classifier',
+                category: 'algorithms',
+                course: 'CS 4780 - Machine Learning',
+                shortDesc: 'Convolutional neural network for field identification of wildlife species tailored for low-resource microcontrollers.',
+                fullDesc: 'Developed a custom CNN architecture optimized for low parameter count and high accuracy on outdoor field images of plant and animal species.',
+                highlights: [
+                    'Constructed custom forward/backward propagation layers in PyTorch without relying on pre-built high-level modules.',
+                    'Applied data augmentation and model quantization to shrink model size down to < 12MB with 94.2% top-1 accuracy.',
+                    'Exported weights to ONNX format for deployment on Raspberry Pi edge hardware.'
+                ],
+                architecture: 'PyTorch for training, NumPy for matrix transformations, and ONNX Runtime for edge device inference.',
+                techStack: ['Python', 'PyTorch', 'NumPy', 'Computer Vision', 'CUDA', 'ONNX'],
+                githubUrl: 'https://github.com'
+            },
+            {
+                id: 'rust-async-http-server',
+                title: 'Rust Async HTTP & WebSocket Server',
+                category: 'systems',
+                course: 'Independent Project',
+                shortDesc: 'Zero-dependency asynchronous HTTP/1.1 and WebSocket protocol server leveraging Tokio and non-blocking I/O.',
+                fullDesc: 'An exploration into low-level networking protocols and Rust memory safety guarantees. Parses raw TCP byte streams into structured HTTP requests and handles WebSocket frame handshakes.',
+                highlights: [
+                    'Written from scratch without high-level web frameworks to learn raw HTTP/1.1 wire protocol parsing.',
+                    'Implemented custom thread-safe route matcher using a Radix Trie for O(k) path matching.',
+                    'Ensured zero memory allocations on hot request processing paths using fixed-size stack buffers.'
+                ],
+                architecture: 'Built with Rust and Tokio async runtime. Evaluated using `wrk` benchmarking tools under heavy concurrent socket connections.',
+                techStack: ['Rust', 'Tokio', 'Async/Await', 'TCP/IP', 'WebSockets', 'Radix Trie'],
+                githubUrl: 'https://github.com'
+            }
+        ];
+
+        // State variables
+        let currentCategory = 'all';
+        let currentSearchQuery = '';
+
+        // DOM elements
+        const projectsGrid = document.getElementById('projects-grid');
+        const emptyState = document.getElementById('empty-state');
+
+        // On Page Load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProjects();
+            lucide.createIcons();
+        });
+
+        // Filter and Search Logic
+        function renderProjects() {
+            const filtered = PROJECTS_DATA.filter(project => {
+                const matchesCat = (currentCategory === 'all') || (project.category === currentCategory);
+                const query = currentSearchQuery.toLowerCase().trim();
+                const matchesSearch = !query || 
+                    project.title.toLowerCase().includes(query) ||
+                    project.shortDesc.toLowerCase().includes(query) ||
+                    project.course.toLowerCase().includes(query) ||
+                    project.techStack.some(tech => tech.toLowerCase().includes(query));
+
+                return matchesCat && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                projectsGrid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+                projectsGrid.innerHTML = filtered.map(createProjectCardHTML).join('');
+            }
+
+            // Refresh icons in newly inserted HTML
+            lucide.createIcons();
+        }
+
+        // Generate HTML for a single card
+        function createProjectCardHTML(project) {
+            const techBadges = project.techStack.slice(0, 4).map(tech => 
+                `<span class="px-2 py-0.5 rounded bg-pine-950 border border-pine-700 text-sage-300 font-mono text-[11px]">${tech}</span>`
+            ).join('');
+
+            const extraCount = project.techStack.length > 4 ? 
+                `<span class="px-1.5 py-0.5 text-cream-200 text-[10px] font-mono">+${project.techStack.length - 4}</span>` : '';
+
+            return `
+                <div class="group bg-pine-900 border border-pine-700 hover:border-sage-400/70 rounded-xl p-5 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sage-950/20">
+                    <div>
+                        <!-- Category / Course Tag -->
+                        <div class="flex items-center justify-between text-xs font-mono text-rust-500 mb-2">
+                            <span>${project.course}</span>
+                            <i data-lucide="folder" class="w-3.5 h-3.5 text-sage-400"></i>
+                        </div>
+
+                        <!-- Title -->
+                        <h3 class="text-lg font-bold text-cream-50 group-hover:text-sage-300 transition-colors">
+                            ${project.title}
+                        </h3>
+
+                        <!-- Short Description -->
+                        <p class="text-xs text-cream-200 mt-2.5 leading-relaxed line-clamp-3">
+                            ${project.shortDesc}
+                        </p>
+                    </div>
+
+                    <div class="mt-5 pt-4 border-t border-pine-700/60 space-y-3">
+                        <!-- Tech Badges -->
+                        <div class="flex flex-wrap items-center gap-1">
+                            ${techBadges}
+                            ${extraCount}
+                        </div>
+
+                        <!-- Card Action Buttons -->
+                        <div class="flex items-center justify-between pt-1">
+                            <button onclick="openProjectModal('${project.id}')" class="text-xs font-semibold text-sage-300 hover:text-sage-100 flex items-center gap-1 transition-colors">
+                                <span>View Details</span>
+                                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </button>
+
+                            <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="text-cream-200 hover:text-cream-50 transition-colors p-1" title="GitHub Repo">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Category Filter Switcher
+        function setCategory(cat) {
+            currentCategory = cat;
+            
+            // Update button UI states
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                if (btn.getAttribute('data-cat') === cat) {
+                    btn.className = 'cat-btn px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-sage-400 text-pine-950 font-semibold';
+                } else {
+                    btn.className = 'cat-btn px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-pine-950 text-cream-200 hover:text-cream-50 border border-pine-700';
+                }
+            });
+
+            renderProjects();
+        }
+
+        // Search Input Handling
+        function onSearchInput(val) {
+            currentSearchQuery = val;
+            const clearBtn = document.getElementById('clear-search');
+            if (val) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
+            }
+            renderProjects();
+        }
+
+        function clearSearch() {
+            const input = document.getElementById('search-input');
+            input.value = '';
+            onSearchInput('');
+        }
+
+        function resetFilters() {
+            clearSearch();
+            setCategory('all');
+        }
+
+        // Project Modal Operations
+        function openProjectModal(projectId) {
+            const project = PROJECTS_DATA.find(p => p.id === projectId);
+            if (!project) return;
+
+            document.getElementById('modal-course').innerText = project.course;
+            document.getElementById('modal-title').innerText = project.title;
+            document.getElementById('modal-full-desc').innerText = project.fullDesc;
+            document.getElementById('modal-architecture').innerText = project.architecture;
+            document.getElementById('modal-github-link').href = project.githubUrl;
+
+            // Render Highlights List
+            const highlightsUl = document.getElementById('modal-highlights');
+            highlightsUl.innerHTML = project.highlights.map(h => 
+                `<li class="flex items-start gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-sage-400 shrink-0 mt-0.5"></i>
+                    <span>${h}</span>
+                </li>`
+            ).join('');
+
+            // Render Tech Badges
+            const techStackDiv = document.getElementById('modal-tech-stack');
+            techStackDiv.innerHTML = project.techStack.map(tech => 
+                `<span class="px-2.5 py-1 rounded-md bg-pine-950 border border-pine-700 text-sage-300 font-mono text-xs">${tech}</span>`
+            ).join('');
+
+            // Show Modal
+            document.getElementById('project-modal').classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+            lucide.createIcons();
+        }
+
+        function closeProjectModal() {
+            document.getElementById('project-modal').classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        // Resume Modal Operations
+        function openResumeModal() {
+            document.getElementById('resume-modal').classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+            lucide.createIcons();
+        }
+
+        function closeResumeModal() {
+            document.getElementById('resume-modal').classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        // Copy Email helper function
+        function copyEmail() {
+            const emailText = document.getElementById('email-text').innerText;
+            
+            // Standard fallback copy method
+            const tempInput = document.createElement('textarea');
+            tempInput.value = emailText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            // Update UI feedback
+            const label = document.getElementById('copy-btn-label');
+            const origText = label.innerText;
+            label.innerText = 'Copied!';
+            
+            setTimeout(() => {
+                label.innerText = origText;
+            }, 2000);
+        }
+
+        // Keyboard Shortcuts (ESC to close modals)
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeProjectModal();
+                closeResumeModal();
+            }
+        });
+
+        // Click outside modal to close
+        document.getElementById('project-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'project-modal') closeProjectModal();
+        });
+        document.getElementById('resume-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'resume-modal') closeResumeModal();
+        });
+    </script>
+</body>
+</html>
